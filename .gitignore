@@ -44,3 +44,7 @@ Thumbs.db
 #
 nosetests.xml
 coverage.xml
+
+# Heroku
+venv
+staticfiles
