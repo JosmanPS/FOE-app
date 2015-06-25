@@ -1,6 +1,4 @@
 {% load staticfiles %}
-{% load analytical %}
-{% load google_analytics %}
 
 {# *** Base *** #}
 
@@ -8,8 +6,6 @@
 <html lang='es'>
 
 <head>
-
-    {% analytical_head_top %}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,30 +16,26 @@
             FOE
         {% endblock site_title %}
     </title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/prettyPhoto.css" %}" rel="stylesheet">
+    <link href="{% static "css/animate.css" %}" rel="stylesheet">
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-
-    {% analytical_head_bottom %}
-    {% google_analytics %}
+    <link rel="shortcut icon" href="{% static "images/ico/favicon.ico" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "images/ico/apple-touch-icon-144-precomposed.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "images/ico/apple-touch-icon-114-precomposed.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "images/ico/apple-touch-icon-72-precomposed.png" %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static "images/ico/apple-touch-icon-57-precomposed.png" %}">
 
 </head>
 
 <body>
 
-    {% analytical_body_top %}
-
+    {% block header %}
     <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -53,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="index.html"><img src="{% static "images/logo.png" %}" alt="logo"></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -80,6 +72,7 @@
             </div>
         </div>
     </header><!--/header-->
+    {% endblock header %}
 
     {% block content %}
     {% endblock content %}
@@ -105,17 +98,19 @@
         </div>
     </footer><!--/#footer-->
 
+    {% endblock footer %}
+
     {% block scripts %}
-    {% endblock scripts %}
 
     <!-- Global Scripts -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src={% static "js/jquery.js" %}></script>
+    <script src={% static "js/bootstrap.min.js" %}></script>
     <!-- <script src="js/jquery.prettyPhoto.js"></script> -->
     <!-- <script src="js/main.js"></script> -->
     <!-- End Global Scripts -->
 
-    {% analytical_body_bottom %}
+    {% endblock scripts %}
+
 
 </body>
 
