@@ -60,7 +60,12 @@ WSGI_APPLICATION = 'herokudjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 DATABASES = dict()
-DATABASES['default'] = dj_database_url.config()
+
+# If 'DATABASE_URL' does not exist, then it's local machine
+if not os.environ.has_key('DATABASE_URL'):
+    os.environ['DATABASE_URL'] = 'postgres://foe:foe2015@localhost/foedb'
+
+DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
