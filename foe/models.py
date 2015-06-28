@@ -17,12 +17,19 @@ class OrganizacionEstudiantil(models.Model):
         ('publicacion', 'Publicación'),
         ('recreacion', 'Recreación'),
     ]
+    ESTADO_CHOICES = [
+        ('activo', 'Activo'),
+        ('inactivo', 'Inactivo'),
+        ('prospecto', 'Prospecto'),
+    ]
 
     # TODO: Ligar a un usuario en la db de tipo OE
 
     # Formato único de registro
     nombre = models.CharField(max_length=50, unique=True,
                               verbose_name='Nombre de la OE')
+    estado = models.CharField(max_length=10, verbose_name='Estado',
+                              default='prospecto', choices=ESTADO_CHOICES)
     tipo_registro = models.CharField(max_length=10,
                                      verbose_name='Tipo de registro',
                                      default='nuevo',
@@ -51,7 +58,7 @@ class OrganizacionEstudiantil(models.Model):
         return self.nombre
 
 
-class MesaDirectiva(models.Model):
+class Miembro(models.Model):
     CARGO_CHOICES = [
         ('presidente', 'Presidente'),
         ('secretario', 'Secretario'),
@@ -107,11 +114,19 @@ class MesaDirectiva(models.Model):
 class DatosBancarios(models.Model):
     BANCOS_CHOICES = [
         ('banamex', 'Banamex'),
+        ('bancomer', 'Bancomer'),
+        ('banorte', 'Banorte'),
+        ('hsbc', 'HSBC'),
+        ('scotiabank', 'Scotiabank'),
+        ('santander', 'Santander'),
+        ('ixe', 'IXE'),
+        ('inbursa', 'Inbursa'),
     ]
 
-    organizacion_estudiantil = models.ForeignKey(OrganizacionEstudiantil,
-                                                 verbose_name='Organización \
-                                                 Estudiantil')
+    organizacion_estudiantil = models.OneToOneField(OrganizacionEstudiantil,
+                                                    verbose_name='Organización \
+                                                    Estudiantil',
+                                                    unique=True)
     banco = models.CharField(max_length=64, default='bancomer',
                              choices=BANCOS_CHOICES, verbose_name='Banco')
     cuenta = models.IntegerField(verbose_name='Número de Cuenta')
@@ -121,3 +136,51 @@ class DatosBancarios(models.Model):
 
     def __unicode__(self):
         return self.organizacion_estudiantil.nombre
+
+
+class Comite(models.Model):
+    CARGO_CHOICES = [
+        ('presidente', 'Presidente'),
+        ('secretario', 'Secretario'),
+        ('tesorero', 'Tesorero'),
+        ('colaborador', 'Colaborador')
+    ]
+    CARRERA_CHOICES = [
+        ('actuaria', 'Actuaría'),
+        ('administracion', 'Administración'),
+        ('cpol', 'Ciencia Política'),
+        ('contabilidad', 'Contabilidad'),
+        ('derecho', 'Derecho'),
+        ('finanzas', 'Dirección Financiera'),
+        ('economia', 'Economía'),
+        ('matematicas', 'Matemáticas Aplicadas'),
+        ('rrii', 'Relaciones Internacionales'),
+        ('computacion', 'Ingeniería en Computación'),
+        ('industrial', 'Ingeniería Industrial'),
+        ('mecatronica', 'Ingeniería Mecatrónica'),
+        ('negocios', 'Ingeniería en Negocios'),
+        ('telecomunicaciones', 'Telecomunicaciones')
+    ]
+
+    # TODO: Ligar a un usuario especifico de tipo comite
+    nombre = models.CharField(max_length=200, verbose_name='Nombre completo')
+    cargo = models.CharField(max_length=32, default='colaborador',
+                             choices=CARGO_CHOICES, verbose_name='Cargo')
+    carrera = models.CharField(max_length=100, default='actuaria',
+                               choices=CARRERA_CHOICES,
+                               verbose_name='Carrera')
+    segunda_carrera = models.CharField(max_length=100, default='actuaria',
+                                       choices=CARRERA_CHOICES,
+                                       verbose_name='Segunda Carrera',
+                                       blank=True, null=True)
+    clave = models.IntegerField(verbose_name='Clave única',
+                                validators=[MinValueValidator(1),
+                                            MaxValueValidator(999999)])
+    semestre = models.SmallIntegerField(verbose_name='Semestre',
+                                        validators=[MinValueValidator(1),
+                                                    MaxValueValidator(20)])
+    correo = models.EmailField(verbose_name='Correo electrónico')
+    telefono = models.IntegerField(verbose_name='Teléfono')
+
+    def __unicode__(self):
+        return u'%s, (Comité Técnico)' % self.nombre

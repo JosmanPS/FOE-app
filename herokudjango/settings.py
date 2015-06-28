@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'foe',
+
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
