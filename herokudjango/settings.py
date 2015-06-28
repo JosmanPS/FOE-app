@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+from django.contrib import messages
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -28,6 +29,14 @@ TEMPLATE_DEBUG = True
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+# MESSAGES
+MESSAGE_TAGS = {
+            messages.SUCCESS: 'alert-success success',
+            messages.WARNING: 'alert-warning warning',
+            messages.ERROR: 'alert-danger error'
+}
+
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 # Application definition
 

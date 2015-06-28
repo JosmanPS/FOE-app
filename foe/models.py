@@ -92,7 +92,7 @@ class Miembro(models.Model):
     carrera = models.CharField(max_length=100, default='actuaria',
                                choices=CARRERA_CHOICES,
                                verbose_name='Carrera')
-    segunda_carrera = models.CharField(max_length=100, default='actuaria',
+    segunda_carrera = models.CharField(max_length=100,
                                        choices=CARRERA_CHOICES,
                                        verbose_name='Segunda Carrera',
                                        blank=True, null=True)
@@ -169,7 +169,7 @@ class Comite(models.Model):
     carrera = models.CharField(max_length=100, default='actuaria',
                                choices=CARRERA_CHOICES,
                                verbose_name='Carrera')
-    segunda_carrera = models.CharField(max_length=100, default='actuaria',
+    segunda_carrera = models.CharField(max_length=100,
                                        choices=CARRERA_CHOICES,
                                        verbose_name='Segunda Carrera',
                                        blank=True, null=True)
