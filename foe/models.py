@@ -28,6 +28,7 @@ class OrganizacionEstudiantil(models.Model):
     # Formato único de registro
     nombre = models.CharField(max_length=50, unique=True,
                               verbose_name='Nombre de la OE')
+    logo = models.ImageField()
     estado = models.CharField(max_length=10, verbose_name='Estado',
                               default='prospecto', choices=ESTADO_CHOICES)
     tipo_registro = models.CharField(max_length=10,
@@ -53,6 +54,8 @@ class OrganizacionEstudiantil(models.Model):
                                  help_text='Exposición de motivos por los \
                                  cuales el club beneficiaría a los \
                                  alumnos del ITAM.')
+    plan_trabajo = models.FileField()
+    presupuesto = models.FileField()
 
     def __unicode__(self):
         return self.nombre
