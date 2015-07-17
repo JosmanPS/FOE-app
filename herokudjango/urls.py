@@ -15,4 +15,7 @@ urlpatterns = patterns(
     url(r'^$', include('foe.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT}),
+
+    # Registration
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 )

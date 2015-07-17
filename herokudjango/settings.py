@@ -49,10 +49,28 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # My apps
     'foe',
 
+    # Third-parties
     'crispy_forms',
+    'registration',
 )
+
+# Registration settings
+REGISTRATION_OPEN = True                # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL = '/'  # The page you want users to arrive at after they successful log in
+LOGIN_URL = '/accounts/login/' 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'foepruebas@gmail.com'
+EMAIL_HOST_PASSWORD = 'foe#2015'
+EMAIL_PORT = 465
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
