@@ -48,3 +48,4 @@ coverage.xml
 # Heroku
 venv
 staticfiles
+media
