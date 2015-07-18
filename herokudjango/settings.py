@@ -41,8 +41,8 @@ DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer
 # Application definition
 
 INSTALLED_APPS = (
-    'material',
-    #'material.admin',
+    # 'material',
+    # 'material.admin',
     'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
