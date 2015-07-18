@@ -6,11 +6,15 @@
 {% block content %}
 <section id="register">
   <div class="container">
+      <h3>Crear usuario</h3>
     <form method="post" action="">
       {% csrf_token %}
       {{ form.as_p }}
-      <input type="submit" value="{% trans 'Submit' %}" />
+  <center>
+      <input type="submit" value=Enviar class="btn" />
+  </center>
     </form>
+    <br>
   </div>
 </section>
 {% endblock %}

@@ -6,15 +6,17 @@
 {% block content %}
 <section>
   <div class="container">
+      <h3>Iniciar sesión</h3>
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Iniciar sesión" />
+    <input type="submit" value="Iniciar sesión" class="btn"/>
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 <p>¿Haz olvidado tu contraseña?{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">Reestablécela</a>.</p>
-<p>¿Aún no te has registrado?<a href="{% url 'registration_register' %}">Regístrate</a>.</p>
+<p>¿Aún no te has registrado? <a href="{% url 'registration_register' %}">Regístrate</a>.</p>
+  <br>
   </div>
 </section>
 
