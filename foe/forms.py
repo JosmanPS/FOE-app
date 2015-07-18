@@ -13,14 +13,6 @@ class OEForm(ModelForm):
         model = OrganizacionEstudiantil
         exclude = ['usuario', 'fiscalizador']
 
-    def __init__(self, *args, **kwargs):
-        self.helper = FormHelper()
-        self.helper.form_method = 'POST'
-        self.helper.add_input(Submit(
-            'guardar',
-            'Guardar',
-            css_class='btn-primary'))
-        super(OEForm, self).__init__(*args, **kwargs)
 
 
 class MiembroForm(ModelForm):

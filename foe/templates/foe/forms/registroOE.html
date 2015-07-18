@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load material_form %}
 {% load crispy_forms_tags %}
 {% block site_title %}
     Registro de OE
@@ -14,7 +15,18 @@
     {% else %}
     <h3>Registra tu organización estudiantil</h3>
     <br>
-    {% crispy form %}
+    <form method="POST">
+      <!-- {% crispy form %} -->
+    {% csrf_token %}
+      {% crispy form %}
+      <br>
+      <center>
+      <button type="submit" name="_submit" class="btn">
+        Enviar
+        <i class="mdi-content-send right white-text"></i>
+      </button>
+      </center>
+    </form>
     {% endif %}
   </div>
 </section>

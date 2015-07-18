@@ -3,12 +3,11 @@
 {# *** Base *** #}
 
 <!DOCTYPE html>
-<html lang='es'>
-
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
     <meta name="description" content="FOE sitio">
     <meta name="author" content="JosmanPS">
     <title>
@@ -16,98 +15,130 @@
             FOE
         {% endblock site_title %}
     </title>
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/prettyPhoto.css" %}" rel="stylesheet">
-    <link href="{% static "css/animate.css" %}" rel="stylesheet">
-    <link href="{% static "css/main.css" %}" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="{% static "images/ico/favicon.ico" %}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "images/ico/apple-touch-icon-144-precomposed.png" %}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "images/ico/apple-touch-icon-114-precomposed.png" %}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "images/ico/apple-touch-icon-72-precomposed.png" %}">
-    <link rel="apple-touch-icon-precomposed" href="{% static "images/ico/apple-touch-icon-57-precomposed.png" %}">
-
+    <!-- CSS  -->
+    <link href="{% static "css/materialize.css" %}" type="text/css" rel="stylesheet">
+    <link href="{% static "css/style.css" %}" type="text/css" rel="stylesheet" >
+    <link href="{% static "css/font-awesome.min.css" %}" type="text/css" rel="stylesheet" >
+    <script src="{% static "js/modernizr.js" %}"></script> <!-- Modernizr -->
 </head>
 
-<body>
+<body id="top" class="scrollspy">
 
     {% block header %}
-    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+   <!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+ 
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+ 
+</div>
+
+<!--Navigation-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html"><img src="{% static "images/logo.png" %}" alt="logo"></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="career.html">Career</a></li>
-                            <li><a href="blog-item.html">Blog Single</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="404.html">404</a></li>
-                            <li><a href="registration.html">Registration</a></li>
-                            <li class="divider"></li>
-                            <li><a href="privacy.html">Privacy Policy</a></li>
-                            <li><a href="terms.html">Terms of Use</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact-us.html">Contact</a></li>
-                </ul>
+            <div class="nav-wrapper"><a id="logo-container" href="#top" class="brand-logo">MD Template</a>
+            <ul id="nav-mobile" class="right side-nav">
+                <li><a href="#intro">Service</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="" target="_blank">Download</a></li>
+            </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
         </div>
-    </header><!--/header-->
+    </nav>
+</div>
     {% endblock header %}
 
     {% block content %}
     {% endblock content %}
 
     {% block footer %}
-
-    <footer id="footer" class="midnight-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-                </div>
-                <div class="col-sm-6">
-                    <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
-                    </ul>
-                </div>
+<!--Footer-->
+<footer id="contact" class="page-footer default_color scrollspy">
+    <div class="container">  
+        <div class="row">
+            <div class="col l6 s12">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix white-text"></i>
+                            <input id="icon_prefix" type="text" class="validate white-text">
+                            <label for="icon_prefix" class="white-text">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-email prefix white-text"></i>
+                            <input id="icon_email" type="email" class="validate white-text">
+                            <label for="icon_email" class="white-text">Email-id</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="mdi-editor-mode-edit prefix white-text"></i>
+                            <textarea id="icon_prefix2" class="materialize-textarea white-text"></textarea>
+                            <label for="icon_prefix2" class="white-text">Message</label>
+                        </div>
+                        <div class="col offset-s7 s5">
+                            <button class="btn waves-effect waves-light red darken-1" type="submit" name="action">Submit
+                                <i class="mdi-content-send right white-text"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">joashpereira.com</h5>
+                <ul>
+                    <li><a class="white-text" href="http://www.joashpereira.com/">Home</a></li>
+                    <li><a class="white-text" href="http://www.joashpereira.com/blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Social</h5>
+                <ul>
+                    <li>
+                        <a class="white-text" href="https://www.behance.net/joashp">
+                            <i class="small fa fa-behance-square white-text"></i> Behance
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://www.facebook.com/joash.c.pereira">
+                            <i class="small fa fa-facebook-square white-text"></i> Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://github.com/joashp">
+                            <i class="small fa fa-github-square white-text"></i> Github
+                        </a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="https://www.linkedin.com/in/joashp">
+                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer><!--/#footer-->
-
+    </div>
+    <div class="footer-copyright default_color">
+        <div class="container">
+            Made by <a class="white-text" href="http://joashpereira.com">Joash Pereira</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
+        </div>
+    </div>
+</footer>
     {% endblock footer %}
 
     {% block scripts %}
 
-    <!-- Global Scripts -->
-    <script src={% static "js/jquery.js" %}></script>
-    <script src={% static "js/bootstrap.min.js" %}></script>
-    <!-- <script src="js/jquery.prettyPhoto.js"></script> -->
-    <!-- <script src="js/main.js"></script> -->
-    <!-- End Global Scripts -->
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src={% static "js/materialize.js" %}></script>
+    <script src={% static "js/init.js" %}></script>
+    <script>$(document).ready(function() {
+    $('select').material_select();
+      });
+    </script>
+    
 
     {% endblock scripts %}
 
