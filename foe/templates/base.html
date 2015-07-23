@@ -28,23 +28,19 @@
    <!-- Pre Loader -->
 <div id="loader-wrapper">
     <div id="loader"></div>
- 
+
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
- 
+
 </div>
 
 <!--Navigation-->
  <div class="navbar-fixed">
     <nav id="nav_f" class="default_color" role="navigation">
         <div class="container">
-            <div class="nav-wrapper"><a id="logo-container" href="#top" class="brand-logo">MD Template</a>
+            <div class="nav-wrapper"><a id="logo-container" href="/" class="brand-logo">FOE</a>
             <ul id="nav-mobile" class="right side-nav">
-                <li><a href="#intro">Service</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="" target="_blank">Download</a></li>
+                <li><a href="/accounts/login">Iniciar sesión</a></li>
             </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
         </div>
@@ -58,7 +54,7 @@
     {% block footer %}
 <!--Footer-->
 <footer id="contact" class="page-footer default_color scrollspy">
-    <div class="container">  
+    <div class="container">
         <div class="row">
             <div class="col l6 s12">
                 <form class="col s12">
@@ -121,8 +117,9 @@
         </div>
     </div>
     <div class="footer-copyright default_color">
-        <div class="container">
-            Made by <a class="white-text" href="http://joashpereira.com">Joash Pereira</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
+      <div class="container">
+            App made by <a class="white-text" href="http://github.com/josmanps">José Manuel Proudinat</a>.
+            Template made by <a class="white-text" href="http://joashpereira.com">Joash Pereira</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
         </div>
     </div>
 </footer>
@@ -137,8 +134,8 @@
     <script>$(document).ready(function() {
     $('select').material_select();
       });
-    </script>
-    
+  </script>
+
 
     {% endblock scripts %}
 

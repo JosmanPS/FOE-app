@@ -2,16 +2,16 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block site_title %}
-    Registro de OE
+    Registro de Comité
 {% endblock site_title %}
 
 {% block content %}
 
 <section>
   <div class="container">
-    <h3>Registra tu organización estudiantil</h3>
+    <h3>Registra tus datos</h3>
     <br>
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <center>

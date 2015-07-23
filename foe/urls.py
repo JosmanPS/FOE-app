@@ -9,4 +9,7 @@ urlpatterns = patterns(
 
     # RegistroOE
     url(r'^registro-oe/$', registro_oe, name='registro_oe'),
+    url(r'^registro-comite/$', registro_comite, name='registro_comite'),
+    url(r'^registro-miembro/$', miembros_oe, name='registro_miembro'),
+    url(r'^registro-bancario/$', datos_bancarios, name='registro_bancario'),
 )

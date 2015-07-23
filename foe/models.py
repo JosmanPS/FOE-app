@@ -33,6 +33,8 @@ class Comite(models.Model):
     # TODO: Ligar a un usuario especifico de tipo comite
     usuario = models.OneToOneField(User, verbose_name='Usuario')
     nombre = models.CharField(max_length=200, verbose_name='Nombre completo')
+    foto = models.ImageField(verbose_name='Foto de perfil', blank=True,
+                             null=True)
     cargo = models.CharField(max_length=32, default='colaborador',
                              choices=CARGO_CHOICES, verbose_name='Cargo')
     carrera = models.CharField(max_length=100, default='actuaria',
@@ -82,7 +84,7 @@ class OrganizacionEstudiantil(models.Model):
                                      blank=True, null=True)
     nombre = models.CharField(max_length=50, unique=True,
                               verbose_name='Nombre de la OE')
-    logo = models.ImageField()
+    logo = models.ImageField(verbose_name='Logo')
     estado = models.CharField(max_length=10, verbose_name='Estado',
                               default='prospecto', choices=ESTADO_CHOICES)
     tipo_registro = models.CharField(max_length=10,
@@ -108,8 +110,8 @@ class OrganizacionEstudiantil(models.Model):
                                  help_text='Exposición de motivos por los \
                                  cuales el club beneficiaría a los \
                                  alumnos del ITAM.')
-    plan_trabajo = models.FileField()
-    presupuesto = models.FileField()
+    plan_trabajo = models.FileField(verbose_name='Plan de trabajo')
+    presupuesto = models.FileField(verbose_name='Presupuesto')
 
     def __unicode__(self):
         return self.nombre
@@ -137,13 +139,15 @@ class Miembro(models.Model):
         ('industrial', 'Ingeniería Industrial'),
         ('mecatronica', 'Ingeniería Mecatrónica'),
         ('negocios', 'Ingeniería en Negocios'),
-        ('telecomunicaciones', 'Telecomunicaciones')
+        ('telecomunicaciones', 'Ingeniería en Telecomunicaciones')
     ]
 
     organizacion_estudiantil = models.ForeignKey(OrganizacionEstudiantil,
                                                  verbose_name='Organización \
                                                  Estudiantil')
     nombre = models.CharField(max_length=200, verbose_name='Nombre completo')
+    foto = models.ImageField(verbose_name='Foto de perfil', blank=True,
+                             null=True)
     cargo = models.CharField(max_length=32, default='colaborador',
                              choices=CARGO_CHOICES, verbose_name='Cargo')
     carrera = models.CharField(max_length=100, default='actuaria',

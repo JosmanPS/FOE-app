@@ -24,10 +24,13 @@ def registro_oe(request):
     args['completo'] = False
 
     if request.method == 'POST':
+        print(usuario)
         if oe:
             form = OEForm(request.POST, request.FILES, instance=oe[0])
         else:
             form = OEForm(request.POST, request.FILES, instance=oe_usuario)
+        print(request.FILES)
+        print(form.is_valid())
         if form.is_valid():
             form.save()
             return redirect(reverse('registro_oe'))
@@ -40,3 +43,88 @@ def registro_oe(request):
     args['form'] = form
     return render(request, "foe/forms/registroOE.html", args)
 
+
+@login_required
+def registro_comite(request):
+    args = dict()
+    usuario = request.user
+    cm_usuario = Comite(usuario=usuario)
+    cm = Comite.objects.filter(usuario=usuario)
+
+    if request.method == 'POST':
+        print(usuario)
+        if cm:
+            form = ComiteForm(request.POST, request.FILES, instance=cm[0])
+        else:
+            form = ComiteForm(request.POST, request.FILES, instance=cm_usuario)
+        print(request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        if cm:
+            form = ComiteForm(instance=cm[0])
+        else:
+            form = ComiteForm(instance=cm_usuario)
+    args['form'] = form
+    return render(request, "foe/forms/comite.html", args)
+
+
+@login_required
+def miembros_oe(request):
+    args = dict()
+    usuario = request.user
+    oe = get_object_or_404(OrganizacionEstudiantil, usuario=usuario)
+    m_oe = Miembro(organizacion_estudiantil=oe)
+    m = Miembro.objects.filter(organizacion_estudiantil=oe)
+
+    if request.method == 'POST':
+        print(usuario)
+        if m:
+            form = MiembroForm(request.POST, request.FILES, instance=m[0])
+        else:
+            form = MiembroForm(request.POST, request.FILES, instance=m_oe)
+        print(request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        if m:
+            form = MiembroForm(instance=m[0])
+        else:
+            form = MiembroForm(instance=m_oe)
+    args['form'] = form
+    return render(request, "foe/forms/miembro.html", args)
+
+
+@login_required
+def datos_bancarios(request):
+    args = dict()
+    usuario = request.user
+    oe = get_object_or_404(OrganizacionEstudiantil, usuario=usuario)
+    m_oe = DatosBancarios(organizacion_estudiantil=oe)
+    m = DatosBancarios.objects.filter(organizacion_estudiantil=oe)
+
+    if request.method == 'POST':
+        print(usuario)
+        if m:
+            form = BancarioForm(request.POST, request.FILES, instance=m[0])
+        else:
+            form = BancarioForm(request.POST, request.FILES, instance=m_oe)
+        print(request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        if m:
+            form = BancarioForm(instance=m[0])
+        else:
+            form = BancarioForm(instance=m_oe)
+    args['form'] = form
+    return render(request, "foe/forms/datos-bancarios.html", args)
