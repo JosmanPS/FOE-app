@@ -11,7 +11,7 @@
   <div class="container">
     <h3>Registra a los miebros de tu organización estudiantil</h3>
     <br>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <center>
