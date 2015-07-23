@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# *** Perfil de OE *** #}
+
+{% block site_title %}
+    Perfil | FOE
+{% endblock site_title %}
+
+{% block content %}
+
+<div class="container">
+  <center>
+    <h3 class="center header text_h2"><span class="span_h2">{{ oe.nombre }}</span></h3>
+    <img src="{{ logo_url }}" height="200" width="200" />
+
+    <h3 class="center header text_h2">Descripción</h3>
+    <p>{{ oe.descripcion }}</p>
+    <p>{{ oe.beneficio }}</p>
+    <p><a href="{{ plan_trabajo_url }}">Plan de trabajo.</a></p>
+    <p><a href="{{ presupuesto_url }}">Presupuesto.</a></p>
+
+    <h3 class="center header text_h2">Contacto</h3>
+    <p>{{ oe.correo }}</p>
+    <p><a href="{{ oe.facebook }}">
+         <i class="small fa fa-facebook-square"></i>
+       </a>
+       <a href="{{ oe.twitter }}">
+         <i class="small fa fa-twitter-square"></i>
+       </a>
+    </p>
+  </center>
+</div>
+
+<br>
+<br>
+
+{% endblock content %}

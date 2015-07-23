@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# *** Directorio *** #}
+
+{% block site_title %}
+    Directorio | FOE
+{% endblock site_title %}
+
+{% block content %}
+
+<div class="container">
+  
+  <h3 class="center header text_h2">Directorio de Organizaciones Estudiantiles</h3>
+  
+{% if organizaciones %}
+
+  <table class="hoverable">
+    <thead>
+      <tr>
+        <th data-field="ID">Nombre</th>
+        <th data-field="Clase">Clasificación</th>
+        <th data-field="email">Correo electrónico</th>
+        <th data-field="redes">Redes sociales</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for oe in organizaciones %}
+      <tr>
+        <td><a href="{% url "perfil_oe" oe.slug %}">{{ oe.nombre }}</a></td>
+        <td>{{ oe.clasificacion }}</td>
+        <td>{{ oe.correo }}</td>
+        <td><a href="{{ oe.facebook }}">
+              <i class="small fa fa-facebook-square"></i>
+            </a>
+            <a href="{{ oe.twitter }}">
+              <i class="small fa fa-twitter-square"></i>
+            </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+
+  <h5>Aún no se han registrado Organizaciones Estudiantiles.</h5>
+
+  {% endif %}
+
+</div>
+<br>
+<br>
+
+{% endblock content %}

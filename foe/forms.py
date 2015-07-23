@@ -11,7 +11,7 @@ class OEForm(ModelForm):
 
     class Meta:
         model = OrganizacionEstudiantil
-        exclude = ['usuario', 'fiscalizador']
+        exclude = ['usuario', 'fiscalizador', 'slug']
 
 
 class MiembroForm(ModelForm):

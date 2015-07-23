@@ -5,13 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from .forms import *
 from .models import *
+from django.utils.text import slugify
+
 #
 # FOE, main site
 #
 
 
 def index(request):
-    args = {}
+    args = dict()
     return render_to_response('foe/main/index.html', args)
 
 
@@ -29,10 +31,10 @@ def registro_oe(request):
             form = OEForm(request.POST, request.FILES, instance=oe[0])
         else:
             form = OEForm(request.POST, request.FILES, instance=oe_usuario)
-        print(request.FILES)
-        print(form.is_valid())
         if form.is_valid():
-            form.save()
+            f = form.save()
+            f.slug = slugify(f.nombre)
+            f.save()
             return redirect(reverse('registro_oe'))
 
     else:
@@ -128,3 +130,22 @@ def datos_bancarios(request):
             form = BancarioForm(instance=m_oe)
     args['form'] = form
     return render(request, "foe/forms/datos-bancarios.html", args)
+
+
+def directorio(request):
+    args = dict()
+    oes = OrganizacionEstudiantil.objects.all()
+    oes.order_by('clasificacion', 'nombre')
+    args['organizaciones'] = oes
+    return render(request, "foe/main/directorio.html", args)
+
+
+def perfil_oe(request, oe_slug):
+    args = dict()
+    oe = get_object_or_404(
+        OrganizacionEstudiantil, slug=oe_slug)
+    args['oe'] = oe
+    args['logo_url'] = oe.logo._get_url()
+    args['plan_trabajo_url'] = oe.plan_trabajo._get_url()
+    args['presupuesto_url'] = oe.presupuesto._get_url()
+    return render(request, "foe/main/perfil.html", args)

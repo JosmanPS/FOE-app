@@ -12,4 +12,6 @@ urlpatterns = patterns(
     url(r'^registro-comite/$', registro_comite, name='registro_comite'),
     url(r'^registro-miembro/$', miembros_oe, name='registro_miembro'),
     url(r'^registro-bancario/$', datos_bancarios, name='registro_bancario'),
+    url(r'^directorio/$', directorio, name='directorio'),
+    url(r'^directorio/(?P<oe_slug>[\w-]+)/$', perfil_oe, name='perfil_oe'),
 )

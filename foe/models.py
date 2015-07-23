@@ -84,6 +84,7 @@ class OrganizacionEstudiantil(models.Model):
                                      blank=True, null=True)
     nombre = models.CharField(max_length=50, unique=True,
                               verbose_name='Nombre de la OE')
+    slug = models.SlugField(blank=True, null=True)
     logo = models.ImageField(verbose_name='Logo')
     estado = models.CharField(max_length=10, verbose_name='Estado',
                               default='prospecto', choices=ESTADO_CHOICES)
